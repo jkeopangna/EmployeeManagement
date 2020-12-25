@@ -1,16 +1,17 @@
 -- Drop any existing databases and create a new one --
-DROP DATABASE IF EXISTS managementDB;
-CREATE DATABASE managementDB;
+DROP DATABASE IF EXISTS management_db;
+CREATE DATABASE management_db;
+USE management_db;
 
 -- First table for DEPARTMENT --
-USE managementDB;
+
 CREATE TABLE Department(
 	Id INT PRIMARY KEY,
     Name VARCHAR(30) UNIQUE NOT NULL
 );
 
 -- Second table for ROLE --
-CREATE TABLE role(
+CREATE TABLE Role(
 	Id INT PRIMARY KEY,
     Title VARCHAR(30),
     Salary DECIMAL,

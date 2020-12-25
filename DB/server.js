@@ -4,13 +4,14 @@ const { connect } = require('http2');
 const util = require('util');
 
 
+
 // Create Connection to MySQL
 const connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'root',
     password: '#Z3coffee',
-    database: 'managementDB',
+    database: 'management_db',
 });
 
 
@@ -18,7 +19,7 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
     if (err) throw err;
     console.log(`Connected at ${connection.threadId}`);
-    // start();
+    start();
 });
 
 connection.query = util.promisify(connection.query)

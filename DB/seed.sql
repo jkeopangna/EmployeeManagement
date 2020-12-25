@@ -1,5 +1,5 @@
 -- First table for DEPARTMENT --
-USE managementDB;
+USE management_db;
 
 INSERT INTO Department(Name)
 
@@ -22,8 +22,8 @@ VALUES('Manager', 100000, 001),
 
 INSERT INTO Employee(First_name, Last_name, Role_Id, Manager_Id)
 
-VALUES (El, Jefe, 001, null),
-(Egg, Yolk, 001, 1),
-(Egg, White, 001, 1),
-(Money, Maker, 002, 1),
-(One, Dollar, 002, 2),
+VALUES ('El', 'Jefe', 001, null),
+('Egg', 'Yolk', 001, 1),
+('Egg', 'White', 001, 1),
+('Money', 'Maker', 002, 1),
+('One', 'Dollar', 002, 2);
