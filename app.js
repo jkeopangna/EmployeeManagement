@@ -3,12 +3,15 @@ const inquirer = require('inquirer');
 const asciiArt = require('asciiart-logo');
 const consoleTable = require('console.table');
 const DB = require('./DB');
-const connection = require('./DB/server');
+const connection = require('./server');
 
 ////-APPLICATION FUNCTIONALITY-////
 
+
+
 ////-START MENU-////
 const start = () => {
+
     inquirer.prompt({
         name: 'action',
         type: 'list',
@@ -47,9 +50,11 @@ const start = () => {
 
 ////-VIEW DEPARTMENTS, EMPLOYEES AND ROLES-////
 const view = () => {
+
   inquirer.prompt({
     name:'table',
     type: 'rawlist',
+    message: 'What would you like to view:',
     choices: ['View Departments','View Employees','View Roles', 'Exit']
   })
   .then((answer) => {
@@ -93,137 +98,137 @@ const view = () => {
   });
 };
 
-// ADD DEPARTMENTS EMPLOYEES AND ROLES
-const add = () => {
-  inquirer.prompt({
-    name: 'add',
-    type: 'list',
-    message: 'What would you like to add:',
-    choices: ['Add Department', 'Add Employee', 'Add Role','Exit']
-})
-.then((answer) => {
-  switch(answer.add) {
-    //ADD DEPARTMENT
-    case 'Add Department':
-      addDepartment();
-    break;
-    //ADD EMPLOYEE
-    case 'Add Employee':
-      addEmployee();
-    break;
-    //ADD ROLE
-    case 'Add Role':
-      addRole();
-    break;
-    //EXIT
-    case 'Exit':
-      start();
-    break;
-  }
-})
-};
+// // ADD DEPARTMENTS EMPLOYEES AND ROLES
+// const add = () => {
+//   inquirer.prompt({
+//     name: 'add',
+//     type: 'list',
+//     message: 'What would you like to add:',
+//     choices: ['Add Department', 'Add Employee', 'Add Role','Exit']
+// })
+// .then((answer) => {
+//   switch(answer.add) {
+//     //ADD DEPARTMENT
+//     case 'Add Department':
+//       addDepartment();
+//     break;
+//     //ADD EMPLOYEE
+//     case 'Add Employee':
+//       addEmployee();
+//     break;
+//     //ADD ROLE
+//     case 'Add Role':
+//       addRole();
+//     break;
+//     //EXIT
+//     case 'Exit':
+//       start();
+//     break;
+//   }
+// })
+// };
 
 
-////-ADD FUNCTIONS-////
+// ////-ADD FUNCTIONS-////
 
-//ADD DEPARTMENT 
-const addDepartment = () => {
-  inquirer.prompt([
-    {
-      name: 'department',
-      type: 'input',
-      message: 'What Department would you like to add:'
-    }
-  ])
-  .then((answer) => {
-    connection.query('INSERT INTO Department SET ?',
-    {
-      name: answer.department
-    },
-    (err) => {
-      if (err) throw err;
-      console.log('Your Department was created successfully!');
-      start();
-    }
-    );
-  });
-};
-//ADD EMPLOYEE
-const addEmployee = () => {
-  inquirer.prompt([
-    {
-      name: 'firstName',
-      type: 'input',
-      message: 'Please enter a first name:'
-    },
-  {
-      name: 'lastName',
-      type: 'input',
-      message: 'Please enter a last name:'
-  },
-  {
-    name: 'roleId',
-    type: 'input',
-    message: 'Enter a role ID:'
-  },
-  {
-    name: 'managerId',
-    type: 'input',
-    message: 'Enter employees Manager Id:'
-  }
-  ])
-  .then((answer) => {
-    connection.query('INSERT INTO Employee SET ?',
-    {
-      First_name: answer.firstName,
-      Last_name: answer.lastName,
-      Role_Id: answer.roleId,
-      Manager_Id: answer.ManagerId,
-    },
-    (err) => {
-      if (err) throw err;
-      console.log('This Employee was added successfully!');
-      start();
-    }
-    );
-  });
-};
-//ADD ROLE
-const addRole = () => {
-  inquirer.prompt([
-    {
-      name: 'title',
-      type: 'input',
-      message: 'Please enter a title:'
-    },
-  {
-      name: 'salary',
-      type: 'input',
-      message: 'Please enter a salary:'
-  },
-  {
-    name: 'departmentId',
-    type: 'input',
-    message: 'Enter a Department ID:'
-  },
-  ])
-  .then((answer) => {
-    connection.query('INSERT INTO Role SET ?',
-    {
-      Title: answer.title,
-      Salary: answer.salary,
-      Department_Id: answer.departmentId,
-    },
-    (err) => {
-      if (err) throw err;
-      console.log('This Role was created successfully!');
-      start();
-    }
-    );
-  });
-}
+// //ADD DEPARTMENT 
+// const addDepartment = () => {
+//   inquirer.prompt([
+//     {
+//       name: 'department',
+//       type: 'input',
+//       message: 'What Department would you like to add:'
+//     }
+//   ])
+//   .then((answer) => {
+//     connection.query('INSERT INTO Department SET ?',
+//     {
+//       name: answer.department
+//     },
+//     (err) => {
+//       if (err) throw err;
+//       console.log('Your Department was created successfully!');
+//       start();
+//     }
+//     );
+//   });
+// };
+// //ADD EMPLOYEE
+// const addEmployee = () => {
+//   inquirer.prompt([
+//     {
+//       name: 'firstName',
+//       type: 'input',
+//       message: 'Please enter a first name:'
+//     },
+//   {
+//       name: 'lastName',
+//       type: 'input',
+//       message: 'Please enter a last name:'
+//   },
+//   {
+//     name: 'roleId',
+//     type: 'input',
+//     message: 'Enter a role ID:'
+//   },
+//   {
+//     name: 'managerId',
+//     type: 'input',
+//     message: 'Enter employees Manager Id:'
+//   }
+//   ])
+//   .then((answer) => {
+//     connection.query('INSERT INTO Employee SET ?',
+//     {
+//       First_name: answer.firstName,
+//       Last_name: answer.lastName,
+//       Role_Id: answer.roleId,
+//       Manager_Id: answer.ManagerId,
+//     },
+//     (err) => {
+//       if (err) throw err;
+//       console.log('This Employee was added successfully!');
+//       start();
+//     }
+//     );
+//   });
+// };
+// //ADD ROLE
+// const addRole = () => {
+//   inquirer.prompt([
+//     {
+//       name: 'title',
+//       type: 'input',
+//       message: 'Please enter a title:'
+//     },
+//   {
+//       name: 'salary',
+//       type: 'input',
+//       message: 'Please enter a salary:'
+//   },
+//   {
+//     name: 'departmentId',
+//     type: 'input',
+//     message: 'Enter a Department ID:'
+//   },
+//   ])
+//   .then((answer) => {
+//     connection.query('INSERT INTO Role SET ?',
+//     {
+//       Title: answer.title,
+//       Salary: answer.salary,
+//       Department_Id: answer.departmentId,
+//     },
+//     (err) => {
+//       if (err) throw err;
+//       console.log('This Role was created successfully!');
+//       start();
+//     }
+//     );
+//   });
+// }
 
-////-UPDATE EMPLOYEE ROLES-////
-const updateRole = () => {};
+// ////-UPDATE EMPLOYEE ROLES-////
+// const updateRole = () => {};
 
-start();
+module.exports = start();
