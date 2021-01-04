@@ -228,7 +228,30 @@ const view = () => {
 //   });
 // }
 
-// ////-UPDATE EMPLOYEE ROLES-////
-// const updateRole = () => {};
-
+////-UPDATE EMPLOYEE ROLES-////
+const updateRole = () => {
+  inquirer.prompt ([
+    {
+    name: 'idUpdate',
+    type: 'input',
+    message: 'Please enter the employee ID to update role:',
+    },
+    {
+      name: 'roleUpdate',
+      type: 'input',
+      message: 'Please enter the new role ID:'
+    }
+  ])
+  .then((answer) => {
+    connection.query(
+      'UPDATE Employee SET Role_Id = ? WHERE Id = ?',
+      [answer.roleUpdate, answer.idUpdate],
+      function (error, res) {
+        if (err) throw err;
+        console.log('Updated role');
+      }
+    );
+    start();
+  });
+};
 module.exports = start();
