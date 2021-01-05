@@ -1,3 +1,5 @@
+////TO RUN APPLICATION RUN SERVER.JS////
+
 ////-DEPENDENCIES-////
 const inquirer = require('inquirer');
 const asciiArt = require('asciiart-logo');
@@ -254,4 +256,4 @@ const updateRole = () => {
     start();
   });
 };
-module.exports = start();
+module.exports = start()

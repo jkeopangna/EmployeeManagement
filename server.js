@@ -3,6 +3,8 @@ const mysql = require('mysql');
 const { connect } = require('http2');
 const util = require('util');
 const inquirer = require('inquirer');
+const logo = require('asciiart-logo');
+
 // const start = require('./app');
 
 // Create Connection to MySQL
@@ -16,6 +18,27 @@ const connection = mysql.createConnection({
 
 ////-APPLICATION FUNCTIONALITY-////
 
+////-LOGO-////
+
+const longText = 'Employee Management'
+
+console.log(
+    logo({
+        name: 'Employee Management',
+        font: 'ANSI Shadow',
+        lineChars: 10,
+        padding: 2,
+        margin: 3,
+        borderColor: 'grey',
+        logoColor: 'bold-green',
+        textColor: 'green',
+    })
+    .emptyLine()
+    .right('version 3.7.123')
+    .emptyLine()
+    .center(longText)
+    .render()
+);
 
 
 ////-START MENU-////
@@ -97,7 +120,7 @@ const view = () => {
             break;
             //////////////////////////
             case 'Exit':
-              connection.end();
+              start();
               break;
     
             default:

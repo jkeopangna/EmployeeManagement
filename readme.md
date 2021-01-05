@@ -13,7 +13,8 @@ Employee Management
 3. As a manager, the user is able to add or view departments, roles, and employees or update roles
 4. A screenshot and link are provided to preview the application
 
-![Preview](assets/preview.jpg)
+![Preview](Assets/preview.jpg)<br>
+[Employee Management](https://drive.google.com/file/d/1HlKdk_SXaz-9ltyV0J4LdQ-ibYjN0cM0/view)
 
 ## Technology Used
 
@@ -22,6 +23,7 @@ Employee Management
 - Javascript
 - MySQL
 - Console Table
+- Ascii-Art
 
 ## Table of Contents
 
@@ -32,7 +34,7 @@ Employee Management
 
 ## Installation
 
-Run server.js
+Run server.js in terminal
 
 ## Usage
 
